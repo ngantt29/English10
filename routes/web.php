@@ -17,4 +17,7 @@ Route::get('/', function () {
 Route::get('/tintuc', function () {
     return view('pages.tintuc');
 });
+Route::get('/My-Information', function () {
+    return view('pages.my_information');
+})->name('my_information');
 
