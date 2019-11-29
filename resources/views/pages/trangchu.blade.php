@@ -345,9 +345,6 @@
     </div>
     </div>
 </section>
-<div class="container-fluid map mt-5 p-0">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.89631299396!2d105.78178761403333!3d21.036834385993956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab357932fbf3%3A0x2ef7eb2fe3b713b6!2zMTM2IFh1w6JuIFRo4buneSwgROG7i2NoIFbhu41uZyBI4bqtdSwgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1573501182117!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-</div>
 <script type="text/javascript" src="lib/jquery.min.js"></script>
 <script type="text/javascript" src="lib/OwlCarousel2-2.3.4/owl.carousel.min.js"></script>
 <script type="text/javascript" src="js/home.js"></script>

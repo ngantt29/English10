@@ -162,14 +162,14 @@ nav.nav-horizontal a:hover {
 .nav-horizontal-content{
 	position: absolute;
 	top: 0px;
-	left: -20px;
+	left: 0;
 	z-index: 99;
 	width: 100%;
 }
 .nav-horizontal-content ul.nav-ul-lv-1{
 	margin-bottom: 0;
 	float: right;
-	line-height: 60px;
+	/* line-height: 60px; */
 }
 .nav-horizontal-content ul.nav-ul-lv-1>li{
 	display: inline-block;
@@ -315,7 +315,8 @@ nav.nav-horizontal-active-2{
 	position: fixed;
 	top: 0;
 	z-index: 999;
-	/* box-shadow: 1px 1px 10px #a7a7a7; */
+	/* border-bottom: 1px solid grey; */
+	box-shadow: 1px 1px 10px #a7a7a7;
 }
 nav.nav-horizontal-active-3{
 	position: fixed;
@@ -522,7 +523,7 @@ ul.menu-left-ul-lv-1>li:hover >i{
 	/*background: #36373D*/
 }
 ul.menu-left-ul-lv-1 li>i:hover{
-	background: #134a60
+	background: #134a60;
 	color: #fff;
 }
 ul.menu-left-ul-lv-child{
@@ -575,7 +576,6 @@ ul.menu-left-ul-lv-1 li.li-hover-active>a{
 }
 /*---------------------------------------Banner-slider---------------------------------------*/
 
-}
 /*---------------------------------------BackToTop-Home---------------------------------------*/
 section.back-to-top{
 	position: fixed;
