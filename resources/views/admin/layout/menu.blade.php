@@ -20,10 +20,10 @@
                 <a class style="cursor: pointer"><i class="fa fa-book fa-fw"></i> Unit<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level ">
                     <li>
-                        <a href="admin/unit/list">List Unit</a>
+                        <a href="admin/Unit/list">List Unit</a>
                     </li>
                     <li>
-                        <a href="admin/unit/add">Add Unit</a>
+                        <a href="admin/Unit/add">Add Unit</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -32,10 +32,10 @@
                 <a><i class="fa fa-database fa-fw"></i> Lesson<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level ">
                     <li>
-                        <a href="admin/lesson/list">List Lesson</a>
+                        <a href="admin/Lesson/list">List Lesson</a>
                     </li>
                     <li>
-                        <a href="admin/lesson/add">Add Lesson</a>
+                        <a href="admin/Lesson/add">Add Lesson</a>
                     </li>
                     {{-- <li>
                         <a class style="cursor: pointer"><i class="fa fa-database fa-fw"></i> Topic Book<span class="fa arrow"></span></a>
@@ -66,10 +66,22 @@
                 <a class style="cursor: pointer"><i class="fa fa-book fa-fw"></i> Exercise<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level ">
                     <li>
-                        <a href="admin/book/list">List Exercise</a>
+                        <a href="admin/Exercise/list">List Exercise</a>
                     </li>
                     <li>
-                        <a href="admin/book/add">Add Exercise</a>
+                        <a href="admin/Exercise/add">Add Exercise</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a class style="cursor: pointer"><i class="fa fa-shopping-cart fa-fw"></i> New Word<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level ">
+                    <li>
+                        <a href="admin/NewWord/list">List New Word</a>
+                    </li>
+                    <li>
+                        <a href="admin/NewWord/add">Add New Word</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -78,7 +90,10 @@
                 <a class style="cursor: pointer"><i class="fa fa-shopping-cart fa-fw"></i> Question<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level ">
                     <li>
-                        <a href="admin/shoppingcart/list">List Question</a>
+                        <a href="admin/Question/list">List Question</a>
+                    </li>
+                    <li>
+                        <a href="admin/Question/add">Add Question</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -111,10 +126,10 @@
                 <a class style="cursor: pointer"><i class="fa fa-comments fa-fw"></i> Comment<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level ">
                     <li>
-                        <a href="#">List Comment</a>
+                        <a href="admin/Question/list">List Comment</a>
                     </li>
                     <li>
-                        <a href="#">Add Comment</a>
+                        <a href="admin/Question/list">Add Comment</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

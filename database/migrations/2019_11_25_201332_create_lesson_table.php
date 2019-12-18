@@ -16,7 +16,7 @@ class CreateLessonTable extends Migration
         Schema::create('lesson', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 255);
-            $table->string('desc', 255);
+            $table->string('desc', 255)->nullable();
             $table->string('avatar', 255);
             $table->string('video', 255);
             $table->unsignedBigInteger('id_unit');

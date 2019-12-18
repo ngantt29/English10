@@ -1,0 +1,5 @@
+label.require::after{
+    content: "*";
+    color: #db2828;
+    margin: -.2em 0 0 .2em;
+}

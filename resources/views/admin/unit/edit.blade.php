@@ -5,8 +5,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Book
-                    <small>{{ $book->ten_sach }}</small>
+                <h1 class="page-header">Unit
+                    <small>{{ $unit->title }}</small>
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
@@ -25,153 +25,26 @@
                         {{ session('Information') }}
                     </div>
                 @endif
-                <form action="admin/book/edit/{{ $book->id }}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <form action="admin/Unit/edit/{{ $unit->id }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
-                        <label>Name</label>
-                        <input class="form-control" name="NameBook" value="{{ $book->ten_sach }}">
-                    </div>                            
+                        <label class="require">Title</label>
+                        <input class="form-control" name="title" placeholder="Please Enter Unit Title" value="{{ $unit->title }}">
+                    </div>  
                     <div class="form-group">
-                        <label>Images</label>
+                        <label>Avatar</label>
                         <p>
-                        <img width="200px" src="upload/Images/{{ $book->anh_bia }}">
+                            <img width="200px" src="upload/Images/{{ $unit->avatar }}">
                         </p>
-                        <input type="file" name="Avatar" class="form-control" value="{{ $book->anh_bia }}">
+                        <input type="file" name="avatar" class="form-control" value="{{ $unit->avatar }}">
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="form-control {{-- ckeditor --}}" rows="6" name="Description">
-                            {{ $book->gioi_thieu }}
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Author</label>
-                        <br>
-                        
-                        {{-- <input class="form-control" list="author" name="browser"
-                            @foreach($author as $a)
-                                @if($book->tac_gia->id == $a->id)
-                                    placeholder="{{ $a->ho_ten }}"
-                                @endif
-                            @endforeach
-                        >
-                        <datalist name="Author" id="author">
-                            @foreach($author as $au)
-                                <option value="{{ $au->ho_ten }}" >
-                            @endforeach
-                        </datalist> --}}
-                        <select name="Author" id="author" class="form-control" >
-                            <option value=""></option>
-                            @foreach($author as $au)
-                                <option value="{{ $au->id }}"
-                                    @if($book->tac_gia_id != "")
-                                        @if($au->id == $book->tac_gia_id)
-                                            selected="selected" 
-                                        @endif
-                                    @endif
-                                >{{ $au->ho_ten }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Publisher</label>
-                        <br>
-                        <select name="Publisher" class="form-control">
-                            <option value=""></option>
-                            @foreach($pub as $p)
-                                <option value="{{ $p->id }}" 
-                                    @if($book->nha_xb_id != "")
-                                        @if($p->id == $book->nha_xb_id)
-                                            selected="selected" 
-                                        @endif
-                                    @endif
-                                > {{ $p->ten_nha_xb }} </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Type Book {{ $book->noi_dung_id }}</label>
-                        <br>
-                        <select name="Type" id="type" class="form-control">
-                            <option value=""></option>
-                            @foreach($type as $t)
-                                <option value="{{ $t->id }}" 
-                                    @if($book->loai_sach_id != "")
-                                        @if($t->id == $book->loai_sach_id)
-                                            selected="selected" 
-                                        @endif
-                                    @endif
-                                >{{ $t->ten_loai }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Topic Book</label>
-                        <br>
-                        <select name="Topic" id="topic" class="form-control">
-                            <option value=""></option>
-                            @foreach($topic as $tp)
-                                <option value="{{ $tp->id }}"
-                                    @if($book->noi_dung != "")
-                                        @if($tp->id == $book->noi_dung->id)
-                                     selected="selected"
-                                        @endif
-                                    @endif
-                                >{{ $tp->ten_chu_de }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Content Book</label>
-                        <br>
-                        <select name="Content" id="content" class="form-control">
-                            <option value=""></option>
-                            @foreach($cont as $t)
-                                <option value="{{ $t->id }}"
-                                    @if($book->noi_dung_id != "")
-                                        @if($t->id == $book->noi_dung_id)
-                                         selected="selected"
-                                         @endif
-                                    @endif
-                                >{{ $t->ten_noi_dung }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Release Date</label>
-                        <input class="form-control" name="ReleaseDate" value="{{ $book->ngay_phat_hanh }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Size</label>
-                        <input class="form-control" name="Size" value="{{ $book->kich_thuoc }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Weight</label>
-                        <input class="form-control" name="Weight" value="{{ $book->trong_luong }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Page Number</label>
-                        <input class="form-control" name="PageNumber" value="{{ $book->so_trang }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Age</label>
-                        <input class="form-control" name="Age" value="{{ $book->do_tuoi }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input class="form-control" name="Price" value="{{ $book->gia_sach }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Amount</label>
-                        <input class="form-control" name="Amount" value="{{ $book->so_luong }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>Other</label>
-                        <input class="form-control" name="Other" value="{{ $book->khac }}" />
+                        <label>Description (*)</label>
+                        <textarea class="form-control {{-- ckeditor --}}" rows="6" name="desc">{{ $unit->desc }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Add</button>
                     <button type="reset" class="btn btn-default">Reset</button>
-                <form>
+                </form>
             </div>
         </div>
         <!-- /.row -->

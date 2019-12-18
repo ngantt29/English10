@@ -17,9 +17,10 @@ class CreateNewWordTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 255);
             $table->string('translate', 255);
-            $table->string('spelling', 255);
+            $table->string('spelling', 255)->nullable();
             $table->unsignedBigInteger('id_lesson');
             $table->foreign('id_lesson')->references('id')->on('lesson');
+            $table->string('lesson', 255);
             $table->timestamps();
         });
     }

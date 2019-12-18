@@ -23,19 +23,19 @@
                         {{ session('Information') }}
                     </div>
                 @endif
-                <form action="admin/book/add" method="POST" enctype="multipart/form-data">
+                <form action="admin/Unit/add" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Title (*)</label>
-                        <input class="form-control" name="NameBook" placeholder="Please Enter Unit Title">
+                        <label class="require">Title</label>
+                        <input class="form-control" name="title" placeholder="Please Enter Unit Title">
                     </div>                            
                     <div class="form-group">
-                        <label>Avatar</label>
-                        <input type="file" name="Avatar" class="form-control">
+                        <label class="require">Avatar</label>
+                        <input type="file" name="avatar" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Description (*)</label>
-                        <textarea class="form-control {{-- ckeditor --}}" rows="6" name="Description"></textarea>
+                        <label>Description</label>
+                        <textarea class="form-control {{-- ckeditor --}}" rows="6" name="desc"></textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Add</button>
                     <button type="reset" class="btn btn-default">Reset</button>

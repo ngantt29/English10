@@ -1,10 +1,10 @@
 @extends('admin.layout.index')
 @section('content')
-<div id="page-wrapper" style="display: inline-block;">
+<div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"> Book
+                <h1 class="page-header"> Unit
                     <small>List</small>
                 </h1>
             </div>
@@ -14,70 +14,22 @@
                 <thead>
                     <tr align="center">
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th width="200px">Description</th>
-                        <th>Author</th>
-                        <th>Publisher</th>
-                        <th>Type</th>
-                        <th>Topic</th>
-                        <th>Content</th>
-                        <th>Release Date</th>
-                        <th>Rate</th>
-                        <th>Size</th>
-                        <th>Weight</th>
-                        <th>Page Number</th>
-                        <th>Age</th>
-                        <th>Price</th>
-                        <th>Amount</th>
-                        <th>Other</th>
+                        <th>title</th>
+                        <th>desc</th>
+                        <th>avatar</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($book as $b)
+                    @foreach($unit as $u)
                     <tr class="odd gradeX" align="center">
-                        <td>{{ $b->id }}</td>
-                        <td>{{ $b->ten_sach }}</td>
-                        <td><img width="100px" src="upload/images/{{ $b->anh_bia }}"></td>
-                        <td class="description">{{ $b->gioi_thieu }}</td>
-                        <td>
-                            @if($b->tac_gia != "")
-                                {{  $b->tac_gia->ho_ten }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($b->nha_xb !="")
-                                {{ $b->nha_xb->ten_nha_xb }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($b->noi_dung != "")
-                                {{ $b->noi_dung->booktopic->booktype->ten_loai }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($b->noi_dung != "")
-                                {{ $b->noi_dung->booktopic->ten_chu_de }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($b->noi_dung != "")
-                                {{ $b->noi_dung->ten_noi_dung }}
-                            @endif
-                        </td>
-                        <td>{{ $b->ngay_phat_hanh }}</td>
-                        <td>{{ $b->danh_gia }}</td>
-                        <td>{{ $b->kich_thuoc }}</td>
-                        <td>{{ $b->trong_luong }}</td>
-                        <td>{{ $b->so_trang }}</td>
-                        <td>{{ $b->do_tuoi }}</td>
-                        <td>{{ $b->gia_sach }}</td>
-                        <td>{{ $b->so_luong }}</td>
-                        <td>{{ $b->khac }}</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/book/delete/{{ $b->id }}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/book/edit/{{ $b->id }}">Edit</a></td>
+                        <td>{{ $u->id }}</td>
+                        <td>{{ $u->title }}</td>
+                        <td class="description">{{ $u->desc }}</td>
+                        <td><img width="100px" src="upload/images/{{ $u->avatar }}"></td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/Unit/delete/{{ $u->id }}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/Unit/edit/{{ $u->id }}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Pibook Clone">
+    <meta name="description" content="English 10 Clone">
     <meta name="author" content="">
-    <title>Admin - Pibook</title>
+    <title>Admin - English 10</title>
     <base href="{{ asset('') }}">
     <!-- Bootstrap Core CSS -->
     <link href="admin_assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +16,8 @@
 
     <!-- Custom CSS -->
     <link href="admin_assets/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <link href="admin_assets/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="admin_assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -30,8 +32,8 @@
     <script type="text/javascript" language="javascript" src="admin_assets/ckeditor/ckeditor.js" ></script>
 
     <!-- tiny editor -->
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    {{-- <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script> --}}
 </head>
 
 <body>
