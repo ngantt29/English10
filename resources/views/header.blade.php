@@ -36,28 +36,28 @@
     <nav class="nav-horizontal container-fluid">
         <div class="nav-horizontal-container container">
             <div class="nav-horizontal-content">
-                    <a href="{{ url('/') }}">
-                        <img src="images/main_logo.png" alt="">
-                    </a>
+                <a href="{{ url('/') }}">
+                    <img style="height: 50px;" src="images/main_logo.png" alt="">
+                </a>
                 <ul class="nav-ul-lv-1">
                     <li><a href="{{ url('/') }}">Trang chủ</a></li>
-                    <li><a href="{{ url('tintuc') }}">Kỹ Năng<i class="fas fa-chevron-down"></i></a>
-                        <div class="menu-lv-2">
-                            <div class="row">
-                                <div class="col">
-                                    <ul>
-                                        <li><a href="">Nghe</a></li>
-                                        <li><a href="">Nói</a></li>
-                                        <li><a href="">Đọc</a></li>
-                                        <li><a href="">Viết</a></li>
-                                    </ul>
-                                </div>
+                    {{-- <li><a href="{{ url('tintuc') }}">Kỹ Năng<i class="fas fa-chevron-down"></i></a>
+                    <div class="menu-lv-2">
+                        <div class="row">
+                            <div class="col">
+                                <ul>
+                                    <li><a href="">Nghe</a></li>
+                                    <li><a href="">Nói</a></li>
+                                    <li><a href="">Đọc</a></li>
+                                    <li><a href="">Viết</a></li>
+                                </ul>
                             </div>
                         </div>
-                    </li>
-                    <li><a href="{{ url('lienhe') }}">Video</a></li>
-                    <li><a href="{{ url('lienhe') }}">Kiểm Tra<i class="fas fa-chevron-down"></i></a>
-                        <div class="menu-lv-2">
+                    </div>
+                    </li> --}}
+                    <li><a href="{{ url('tieng-anh-lop-10') }}">Bài Giảng</a></li>
+                    <li><a href="{{ url('kiem-tra') }}">Kiểm Tra</a>
+                        {{-- <div class="menu-lv-2">
                             <div class="row">
                                 <div class="col">
                                     <ul>
@@ -68,12 +68,14 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </li>
                     <li>
-                        <a href="#login" data-toggle="modal">Đăng Nhập</a>
-                        {{-- <span class="text-lowercase" style="padding: 0 10px;color : grey">hoặc</span>
-                            <a href="#signUp" data-toggle="modal">Đăng Ký</a> --}}
+                        @if(isset($user_login))
+                            <a href="{{ url("dang-nhap") }}">{{ $user_login->name }}</a>
+                        @else
+                            <a href="{{ url("dang-nhap") }}">Đăng Nhập</a>
+                        @endif
                     </li>
                 </ul>
                 <div class="menu-mobile-button"><i class="fas fa-bars"></i></div>
@@ -127,86 +129,4 @@
     <script type="text/javascript" src="js/menu-mobile.js"></script>
     </section>
 
-    <!-- login -->
-    <section>
-        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle" style="text-transform: uppercase;">đăng
-                            nhập
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">tên tài khoản hoặc địa chỉ email <span
-                                        style="color: #d70000;">*</span></label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Enter email" require>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">mật khẩu <span style="color: #d70000;">*</span>
-                                </label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Password" require>
-                            </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">ghi nhớ mật khẩu</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="text-transform: uppercase;">đăng
-                                nhập</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- sign up -->
-    <section>
-        <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle" style="text-transform: uppercase;">đăng ký
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">tên tài khoản <span
-                                        style="color: #d70000;">*</span></label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" require>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">địa chỉ email <span
-                                        style="color: #d70000;">*</span></label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" require>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">mật khẩu <span style="color: #d70000;">*</span>
-                                </label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" require>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="text-transform: uppercase;">đăng
-                                ký</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </header>

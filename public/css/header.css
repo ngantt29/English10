@@ -15,15 +15,18 @@ header.header-active{
 
 /*---------------------------------------Nav-horizontal---------------------------------------*/
 nav.nav-horizontal{
-    background: #fff;
+    background: #eadcb9;
     color: #000;
 	-webkit-transition: 0.4s all;
 	-moz-transition: 0.4s all;
 	-ms-transition: 0.4s all;
 	-o-transition: 0.4s all;
     transition: 0.4s all;
-    padding-top: 30px;
-    padding-bottom: -13px;
+    padding-top: 10px;
+	box-shadow: 1px 1px 10px #a7a7a7;
+	z-index: 1000;
+	background-image: url(../images/header.jpg);
+    /* background-repeat: round; */
 	/*position: fixed;
 	z-index: 999;
 	top: 40px;*/
@@ -198,9 +201,9 @@ nav.nav-horizontal a:hover {
 .nav-horizontal-content ul.nav-ul-lv-1>li>a{
 	color: #000;
 	line-height: 50px;
-	font-size: 18px;
+	font-size: 22px;
     display: inline-block;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 	padding: 0 10px;
 	-webkit-transition: 0.4s all;
 	-moz-transition: 0.4s all;

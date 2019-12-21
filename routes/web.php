@@ -10,15 +10,41 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('pages.trangchu');
+Route::group(['prefix' => ''], function(){
+    Route::get('/', 'HomepageController@getHomePage');
+    Route::get('/tieng-anh-lop-10', 'UnitsController@getUnits');
+    Route::get('/tieng-anh-lop-10/{id}','UnitController@getUnit');
+    Route::get('/kiem-tra', 'ExamsController@getExams');
+    Route::get('/kiem-tra/{id}','ExamController@getExam');
+    Route::get('/bai-giang/{id}','LessonController@getLesson');
+    Route::get('/dang-nhap','UserController@getLogin');
+    Route::post('/dang-nhap','UserController@postLogin');
+    Route::get('/dang-ky','UserController@getSignIn');
+    Route::post('/dang-ky','UserController@postSignIn');
+    Route::get('/dang-xuat','UserController@getLogout');
+    Route::post('/dang-xuat','UserController@postLogout');
 });
-Route::get('/tintuc', function () {
-    return view('pages.tintuc');
+
+Route::group(['prefix' => 'luyen-tap', 'middlerware' => 'login'], function(){
+    Route::get('','ExercisesController@getExercises');
+    Route::get('/{id}','ExerciseController@getExercise');
 });
 
-Route::group(['prefix' => 'admin'], function() {
+Route::get('admin/login', 'UserController@getAdminLogin');
+Route::post('admin/login', 'UserController@postAdminLogin');
+
+Route::get('admin/logout', 'UserController@getAdminLogout');
+Route::post('admin/logout', 'UserController@postAdminLogout');
+
+Route::group(['prefix' => 'ajax'], function() {
+    //
+    Route::post('dang-ky', 'AjaxController@postSignUp');
+    Route::get('cart_detail_order/{cart?}', 'AjaxController@getCartDetailOrder');
+    Route::get('rating/{data?}', 'AjaxController@postRating')->name('rating');
+});
+
+
+Route::group(['prefix' => 'admin','middleware' => 'adminLogin'], function() {
     //
     Route::get('', 'Admin\UnitController@getAddUnit');
     Route::group(['prefix' => 'ajax'], function() {

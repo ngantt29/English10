@@ -52,7 +52,7 @@ class QuestionController extends Controller
             $question->save();
             return redirect('admin/Question/add')->with('Information','Thêm thành công');
         } else if($type == 1){
-            $extension = ['xls','xlsx'];
+            $extension = ['xls','xlsx','end'];
             if($request->hasFile('file')){
                 $file = $request->file('file');
                 $duoi = $file->getClientOriginalExtension();
@@ -83,7 +83,7 @@ class QuestionController extends Controller
                         $question->id_exam = $request->id_exam;
                         $question->exam = $exam[0]->title;
                         $question->save();
-                        // return redirect('admin/Question/add')->with('Information','Thêm thành công');
+                        return redirect('admin/Question/add')->with('Information','Thêm thành công');
                     }
                 }
             }

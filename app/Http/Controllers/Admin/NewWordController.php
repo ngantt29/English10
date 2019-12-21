@@ -53,7 +53,7 @@ class NewWordController extends Controller
             $newWord->save();
             return redirect('admin/NewWord/add')->with('Information','Thêm thành công');
         } else if($type == 1){
-            $extension = ['xls','xlsx'];
+            $extension = ['xls','xlsx','end'];
             if($request->hasFile('file')){
                 $file = $request->file('file');
                 $duoi = $file->getClientOriginalExtension();
@@ -79,7 +79,7 @@ class NewWordController extends Controller
                         $newWord->id_lesson = $request->id_lesson;
                         $newWord->lesson = $lesson[0]->title;
                         $newWord->save();
-                        // return redirect('admin/NewWord/add')->with('Information','Thêm thành công');
+                        return redirect('admin/NewWord/add')->with('Information','Thêm thành công');
                     }
                 }
             }
