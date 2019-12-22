@@ -87,13 +87,25 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a class style="cursor: pointer"><i class="fa fa-shopping-cart fa-fw"></i> Question<span class="fa arrow"></span></a>
+                <a class style="cursor: pointer"><i class="fa fa-shopping-cart fa-fw"></i> Question Exam<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level ">
                     <li>
-                        <a href="admin/Question/list">List Question</a>
+                        <a href="admin/QuestionExam/list">List Question</a>
                     </li>
                     <li>
-                        <a href="admin/Question/add">Add Question</a>
+                        <a href="admin/QuestionExam/add">Add Question</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a class style="cursor: pointer"><i class="fa fa-shopping-cart fa-fw"></i> Question Exercise<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level ">
+                    <li>
+                        <a href="admin/QuestionExercise/list">List Question</a>
+                    </li>
+                    <li>
+                        <a href="admin/QuestionExercise/add">Add Question</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

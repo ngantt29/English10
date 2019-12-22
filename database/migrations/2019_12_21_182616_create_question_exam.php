@@ -23,6 +23,7 @@ class CreateQuestionExam extends Migration
             $table->integer('correctAnswer');
             $table->unsignedBigInteger('id_exam');
             $table->foreign('id_exam')->references('id')->on('exam');
+            $table->string('exam', 255)->nullable();
             $table->timestamps();
         });
     }

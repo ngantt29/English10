@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('content')
-<div id="page-wrapper">
+<div id="page-wrapper" style="display: inline-block;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -28,24 +28,28 @@
                 <thead>
                     <tr align="center">
                         <th>ID</th>
-                        <th>Lesson</th>
-                        <th>New Word </th>
-                        <th>Translate </th>
-                        <th>Spelling </th>
+                        <th>Question</th>
+                        <th>Answer 1</th>
+                        <th>Answer 2</th>
+                        <th>Answer 3</th>
+                        <th>Answer 4</th>
+                        <th>Correct Answer</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($newWord as $n)
+                    @foreach($question as $q)
                     <tr class="odd gradeX" align="center">
-                        <td>{{ $n->id }}</td>
-                        <td>{{ $n->lesson }}</td>
-                        <td>{{ $n->name }}</td>
-                        <td class="description">{{ $n->translate }}</td>
-                        <td>{{ $n->spelling }}</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/NewWord/delete/{{ $n->id }}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/NewWord/edit/{{ $n->id }}">Edit</a></td>
+                        <td>{{ $q->id }}</td>
+                        <td>{{ $q->question }}</td>
+                        <td>{{ $q->ans1 }}</td>
+                        <td>{{ $q->ans2 }}</td>
+                        <td>{{ $q->ans3 }}</td>
+                        <td>{{ $q->ans4 }}</td>
+                        <td>{{ $q->correctAnswer }}</td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/QuestionExam/delete/{{ $q->id }}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/QuestionExam/edit/{{ $q->id }}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -23,6 +23,7 @@ class CreateQuestionExercise extends Migration
             $table->integer('correctAnswer');
             $table->unsignedBigInteger('id_exercise');
             $table->foreign('id_exercise')->references('id')->on('exercise');
+            $table->string('exercise', 255)->nullable();
             $table->timestamps();
         });
     }

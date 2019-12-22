@@ -20,7 +20,7 @@ class CreateNewWordTable extends Migration
             $table->string('spelling', 255)->nullable();
             $table->unsignedBigInteger('id_lesson');
             $table->foreign('id_lesson')->references('id')->on('lesson');
-            $table->string('lesson', 255);
+            $table->string('lesson', 255)->nullable();
             $table->timestamps();
         });
     }

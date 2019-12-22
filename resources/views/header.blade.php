@@ -70,11 +70,29 @@
                             </div>
                         </div> --}}
                     </li>
-                    <li>
+                    <li class="profile-header">
                         @if(isset($user_login))
-                            <a href="{{ url("dang-nhap") }}">{{ $user_login->name }}</a>
+                        <div>
+                            <a href="{{ url("trang-ca-nhan") }}">{{ $user_login->fullname }}</a>
+                        </div>
+                        <div class="profile-menu">
+                            <ul>
+                                <li>
+                                    <a>Trang cá nhân</a>
+                                </li>
+                                <li>
+                                    <a>Thay đổi thông tin</a>
+                                </li>
+                                <li>
+                                    <a>Đổi mật khẩu</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url("dang-xuat") }}">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </div>
                         @else
-                            <a href="{{ url("dang-nhap") }}">Đăng Nhập</a>
+                        <a href="{{ url("dang-nhap") }}">Đăng Nhập</a>
                         @endif
                     </li>
                 </ul>

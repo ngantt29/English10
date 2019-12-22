@@ -3,3 +3,8 @@ label.require::after{
     color: #db2828;
     margin: -.2em 0 0 .2em;
 }
+
+#dataTables-example th{
+    white-space: nowrap;
+    
+}

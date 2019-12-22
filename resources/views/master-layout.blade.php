@@ -23,11 +23,12 @@
     <link rel="stylesheet" type="text/css" href="{{  asset('css/outside.css') }}">
     <link rel="stylesheet" type="text/css" href="{{  asset('css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{  asset('css/home-responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{  asset('admin_assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap_4.0.0/js/bootstrap.min.js"></script>
+    {{-- <script type="text/javascript" src="lib/bootstrap_4.0.0/js/bootstrap.min.js"></script> --}}
     <script type="text/javascript" src="lib/OwlCarousel2-2.3.4/owl.carousel.min.js"></script>
     <script type="text/javascript" src="{{  asset('js/home.js') }}"></script>
 

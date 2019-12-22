@@ -25,7 +25,7 @@
                     {{ session('Information') }}
                 </div>
                 @endif
-                <form action="admin/Unit/edit/{{ $lesson->id }}" method="POST" enctype="multipart/form-data">
+                <form action="admin/Lesson/edit/{{ $lesson->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Title (*)</label>

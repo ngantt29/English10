@@ -30,7 +30,7 @@ class UserController extends Controller
         // echo bcrypt($request->password);
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
             $user = Auth::user();
-            return redirect('');
+            return back()->withInput();
         } else{
             return redirect('dang-nhap')->with('Warning','Tài khoản hoặc mật khẩu không chính xác! Vui lòng thử lại');
         }
@@ -55,7 +55,7 @@ class UserController extends Controller
             return redirect("dang-ky")->with('Warning', "Nhập lại mật khẩu không chính xác");
         }
         $user = new User;
-        $user->name = $request->name;
+        $user->fullname = $request->fullname;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
@@ -63,7 +63,8 @@ class UserController extends Controller
     }
 
     function getLogout(){
-        return view('auth.logout');
+        Auth::logout();
+        return redirect('');
     }
 
     function postLogout(){

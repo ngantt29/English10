@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Unit
+                <h1 class="page-header">Question Exam
                     <small>Add</small>
                 </h1>
             </div>
@@ -23,70 +23,33 @@
                     {{ session('Information') }}
                 </div>
                 @endif
-                <form action="admin/Question/add" method="POST" enctype="multipart/form-data">
+                <form action="admin/QuestionExam/add" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label class="require">Type Input</label><br>
                         <label class="radio-inline"><input type="radio" name="type" value="1" checked>Multiple</label>
                         <label class="radio-inline"><input type="radio" name="type" value="2">One by one</label>
                     </div>
+                    <div class="form-group exam">
+                        <label>Exam</label>
+                        <select name="id_exam" class="form-control">
+                            <option value=""></option>
+                            @foreach($exam as $e)
+                            <option value="{{ $e->id }}">{{ $e->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div id="type_1">
                         <div class="form-group">
-                            <label class="require">Question of ?</label><br>
-                            <label class="radio-inline"><input type="radio" name="typeof" value="1" checked>Exercise</label>
-                            <label class="radio-inline"><input type="radio" name="typeof" value="2">Exam</label>
-                        </div>
-                        <div class="form-group exercise">
-                            <label class="require">Exercise</label>
-                            <select name="id_exercise" class="form-control">
-                                <option value=""></option>
-                                @foreach($exercise as $e)
-                                    <option value="{{ $e->id }}">{{ $e->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group exam">
-                            <label>Exam</label>
-                            <select name="id_exam" class="form-control">
-                                <option value=""></option>
-                                @foreach($exam as $e)
-                                    <option value="{{ $e->id }}">{{ $e->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label>File Excel</label>
-                            <div class="form-group"><a href="upload/file/">Form Input NewWord</a></div>
+                            <div class="form-group"><a href="upload/file/">Form Input Question</a></div>
                             <input class="form-control" name="file" type="file">
                         </div>
                     </div>
                     <div id="type_2">
                         <div class="form-group">
-                            <label class="require">Question of ?</label><br>
-                            <label class="radio-inline"><input type="radio" name="typeof" value="1" checked>Exercise</label>
-                            <label class="radio-inline"><input type="radio" name="typeof" value="2">Exam</label>
-                        </div>
-                        <div class="form-group">
                             <label class="require">Question</label>
                             <input class="form-control" name="question" placeholder="Please Enter Question">
-                        </div>
-                        <div class="form-group exercise">
-                            <label class="require">Exercise</label>
-                            <select name="id_exercise" class="form-control">
-                                <option value=""></option>
-                                @foreach($exercise as $e)
-                                    <option value="{{ $e->id }}">{{ $e->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group exam">
-                            <label>Exam</label>
-                            <select name="id_exam" class="form-control">
-                                <option value=""></option>
-                                @foreach($exam as $e)
-                                    <option value="{{ $e->id }}">{{ $e->title }}</option>
-                                @endforeach
-                            </select>
                         </div>
                         <div class="form-group">
                             <label class="require">Answer 1</label>
@@ -132,7 +95,6 @@
         // })
         $(document).ready(function(){
             $("#type_2").hide();
-            $(".exam").hide();
             $("input[name=type]:radio").change(function(){
                 const type = Number($(this).val());
                 if(type === 1){
@@ -142,19 +104,6 @@
                     $("#type_1").hide();
                     $("#type_2").show();
                 }
-            });
-            $("input[name=typeof]:radio").change(function(){
-                const type = Number($(this).val());
-                if(type === 1){
-                    $(".exercise").show();
-                    $(".exam").hide();
-                } else if(type === 2){
-                    $(".exercise").hide();
-                    $(".exam").show();
-                }
-            });
-            $("select[name=id_exercise]").change(function(){
-                console.log(Number($(this).val()));
             });
         });
         

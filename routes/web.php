@@ -15,7 +15,7 @@ Route::group(['prefix' => ''], function(){
     Route::get('/tieng-anh-lop-10', 'UnitsController@getUnits');
     Route::get('/tieng-anh-lop-10/{id}','UnitController@getUnit');
     Route::get('/kiem-tra', 'ExamsController@getExams');
-    Route::get('/kiem-tra/{id}','ExamController@getExam');
+    Route::get('/luyen-tap','ExercisesController@getExercises');
     Route::get('/bai-giang/{id}','LessonController@getLesson');
     Route::get('/dang-nhap','UserController@getLogin');
     Route::post('/dang-nhap','UserController@postLogin');
@@ -25,9 +25,19 @@ Route::group(['prefix' => ''], function(){
     Route::post('/dang-xuat','UserController@postLogout');
 });
 
-Route::group(['prefix' => 'luyen-tap', 'middlerware' => 'login'], function(){
-    Route::get('','ExercisesController@getExercises');
-    Route::get('/{id}','ExerciseController@getExercise');
+Route::group(['prefix' => 'kiem-tra/{id}', 'middlerware' => 'login'], function(){
+    // Route::get('','ExercisesController@getExercises');
+    Route::get('','ExamController@getExam')->name("kiem-tra");
+});
+
+Route::group(['prefix' => 'tieng-anh-lop-10/{id_unit}/luyen-tap/{id}', 'middlerware' => 'login'], function(){
+    Route::get('','ExerciseController@getExercise')->name("luyen-tap");
+    // Route::get('/{id}','ExerciseController@getExercise');
+});
+
+Route::group(['prefix' => 'trang-ca-nhan', 'middlerware' => 'login'], function(){
+    Route::get('','ProfileController@getProfile');
+    Route::post('','ProfileController@postProfile');
 });
 
 Route::get('admin/login', 'UserController@getAdminLogin');
@@ -128,17 +138,23 @@ Route::group(['prefix' => 'admin','middleware' => 'adminLogin'], function() {
         });
     });
     
-    Route::group(['prefix' => 'Question'], function(){
-        Route::get('list', 'Admin\QuestionController@getListQuestion');
+    Route::group(['prefix' => 'QuestionExercise'], function(){
+        Route::get('list', 'Admin\QuestionExerciseController@getListQuestion');
 
-        Route::get('add', 'Admin\QuestionController@getAddQuestion');
-        Route::post('add', 'Admin\QuestionController@postAddQuestion');
+        Route::get('add', 'Admin\QuestionExerciseController@getAddQuestion');
+        Route::post('add', 'Admin\QuestionExerciseController@postAddQuestion');
 
-        Route::get('delete/{id}', 'Admin\QuestionController@getDeleteQuestion');
+        Route::get('delete/{id}', 'Admin\QuestionExerciseController@getDeleteQuestion');
 
-        Route::group(['prefix' => 'Questiondetail'], function() {
-            //
-            Route::get('list/{idcart}', 'Admin\QuestionDetailController@getListQuestion');
-        });
+    });
+
+    Route::group(['prefix' => 'QuestionExam'], function(){
+        Route::get('list', 'Admin\QuestionExamController@getListQuestion');
+
+        Route::get('add', 'Admin\QuestionExamController@getAddQuestion');
+        Route::post('add', 'Admin\QuestionExamController@postAddQuestion');
+
+        Route::get('delete/{id}', 'Admin\QuestionExamController@getDeleteQuestion');
+
     });
 });

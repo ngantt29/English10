@@ -32,7 +32,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tên tài khoản <span style="color: #d70000;">*</span></label>
-                        <input type="text" name="name" class="form-control" require>
+                        <input type="text" name="fullname" class="form-control" require>
                     </div>
 
                     <div class="form-group">
