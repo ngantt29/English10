@@ -44,7 +44,6 @@
 											</div>
 											<div class="col-md-9">
 												<div class="form-group">
-													{{-- <span id="span-name" class="span-display" style="display: unset;"></span> --}}
 													{{ $user->fullname }}
 												</div>
 											</div>
@@ -60,7 +59,6 @@
 											</div>
 											<div class="col-md-9">
 												<div class="form-group">
-													{{-- <span id="span-name1" class="span-display" style="display: unset;">20-12-2000</span> --}}
 													{{ $user->birthday }}
 												</div>
 											</div>
@@ -76,7 +74,6 @@
 											</div>
 											<div class="col-md-9">
 												<div class="form-group">
-													{{-- <span id="span-name2" class="span-display" style="display: unset;">0123 456 789 </span> --}}
 													{{ $user->phone }}
 												</div>
 											</div>
@@ -92,7 +89,6 @@
 											</div>
 											<div class="col-md-9">
 												<div class="form-group">
-													{{-- <span id="span-name3" class="span-display" style="display: unset;">abc@xyz.com</span> --}}
 													{{ $user->email }}
 												</div>
 											</div>
@@ -108,7 +104,6 @@
 											</div>
 											<div class="col-md-9">
 												<div class="form-group">
-													{{-- <span id="span-name6" class="span-display" style="display: unset;"></span> --}}
 													{{ $user->address }}
 												</div>
 											</div>
@@ -170,7 +165,7 @@
 												{{ $i+1 }}
 											</td>
 											<td>
-												{{ $scoresExam[$i]->exercise->title }}
+												{{ $scoresExam[$i]->exam->title }}
 											</td>
 											<td>
 												{{ $scoresExam[$i]->score }}
