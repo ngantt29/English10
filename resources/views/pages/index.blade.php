@@ -41,31 +41,6 @@
     </div>
     <div class="h-best-sale h-g">
         <div class="h-g-title">
-            Bài tập củng cố kiến thức tiếng anh lớp 10
-        </div>
-        <div class="h-best-sale-content">
-            <div class="row">
-                @foreach ($exercises as $exer)
-                <div class="col-12 col-sm-12 col-md-6 col-lg-3 unit">
-                    <div class="unit-sub">
-                        <div class="h-best-sale-product h-image-scale">
-                            <a href="{{ url("luyen-tap/$exer->id") }}">
-                                <img src="{{ asset("upload/images/$exer->avatar") }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="h-best-sale-product-content">
-                            <div class="product-name">
-                                <a href="{{url("luyen-tap/$exer->id")}}">{{ $exer->title }}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <div class="h-best-sale h-g">
-        <div class="h-g-title">
             Các bài kiểm tra trình độ tiếng anh lớp 10
         </div>
         <div class="h-best-sale-content">
