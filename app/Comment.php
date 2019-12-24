@@ -17,6 +17,10 @@ class Comment extends Model
     	return $this->belongsTo('App\Exercise','id_exercise','id');
     }
     
+    public function exam(){
+    	return $this->belongsTo('App\Exam','id_exam','id');
+    }
+
     public function user(){
     	return $this->belongsTo('App\User','id_user','id');
     }

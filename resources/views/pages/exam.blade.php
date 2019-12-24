@@ -121,7 +121,8 @@
                 </div>
             </form>
             <div class="column">
-                @foreach ($exam->comment as $comment)
+                @if(isset($exam))
+                @foreach($exam->comment as $comment)
                 <div style="margin: 10px 0px; border-left: 3px solid rgb(197, 197, 197); padding-left: 10px;">
                     <div><strong
                             style="display: inline-block; margin: 0px 0px 0px 5px;">{{ $comment->user->fullname }}</strong>
@@ -142,6 +143,7 @@
                     {{-- <form class="ui form"><div class="fields"><div class="fourteen wide field"><textarea name="comment" rows="2">hello</textarea></div><button width="4" class="ui primary button">Sửa</button></div></form> --}}
                 </div>
                 @endforeach
+                @endif
             </div>
             <div class="text-center mt-1e"></div>
         </div>

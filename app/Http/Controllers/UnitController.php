@@ -30,11 +30,14 @@ class UnitController extends Controller
         foreach($lessons as $lesson){
             $exercise = Exercise::where('id_lesson', $lesson->id)->first();
             if($user){
-                $score = ScoreExercise::where('id_exercise',$exercise->id)->where('id_user',$user->id)->first();
-                if($score)
-                    $lesson->score = $score->score;
+                if($exercise){
+                    $score = ScoreExercise::where('id_exercise',$exercise->id)->where('id_user',$user->id)->first();
+                        if($score){
+                            $lesson->score = $score->score;
+                        }
+                    $lesson->id_exercise = $exercise->id;
+                }
             }
-            $lesson->id_exercise = $exercise->id;
         }
     	return view('pages.unit',['unit'=>$unit, 'lessons'=>$lessons]);
     }

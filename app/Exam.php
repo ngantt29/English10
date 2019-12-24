@@ -16,4 +16,8 @@ class Exam extends Model
     public function questionExam(){
         return $this->hasMany('App\QuestionExam','id_exam');
     }
+
+    public function comment(){
+        return $this->hasMany('App\Comment','id_exam');
+    }
 }

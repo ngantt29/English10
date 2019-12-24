@@ -53,15 +53,16 @@ class UserController extends Controller
             'password.max'=>"Mật khẩu quá dài, nhiều nhất 32 ký tự",
             'rePassword.required'=>"Bạn chưa nhập lại mật khẩu",
         ]);
-        if($request->password == $request->re_password){
+        if($request->password != $request->re_password){
             return redirect("dang-ky")->with('Warning', "Nhập lại mật khẩu không chính xác");
+        } else {
+            $user = new User;
+            $user->fullname = $request->fullname;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
+            return redirect("dang-nhap")->with('Information', "Đăng ký thành công! Hãy đăng nhập");
         }
-        $user = new User;
-        $user->fullname = $request->fullname;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
-        return redirect("dang-nhap")->with('Information', "Đăng ký thành công! Hãy đăng nhập");
     }
 
     function getChangePassword(){

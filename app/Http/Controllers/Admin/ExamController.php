@@ -80,8 +80,8 @@ class ExamController extends Controller
         $exam->title = $request->title;
         $exam->desc = $request->desc;
         $extension = ['jpg','png','jpeg','end'];
-        if($rq->hasFile('avatar')){
-            $file = $rq->file('avatar');
+        if($request->hasFile('avatar')){
+            $file = $request->file('avatar');
             $duoi = $file->getClientOriginalExtension();
             foreach ($extension as $key) {
                 # code...

@@ -14,7 +14,7 @@
                 <!-- /input-group -->
             </li> --}}
             <li>
-                <a href="admin/book/list"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ url('admin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
                 <a class style="cursor: pointer"><i class="fa fa-book fa-fw"></i> Banner<span class="fa arrow"></span></a>
@@ -82,6 +82,18 @@
                     </li>
                     <li>
                         <a href="admin/Exercise/add">Add Exercise</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a class style="cursor: pointer"><i class="fa fa-book fa-fw"></i> Exam<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level ">
+                    <li>
+                        <a href="admin/Exam/list">List Exam</a>
+                    </li>
+                    <li>
+                        <a href="admin/Exam/add">Add Exam</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

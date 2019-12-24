@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\QuestionImport;
 use App\QuestionExam;
 use App\Exam;
 
@@ -21,7 +24,6 @@ class QuestionExamController extends Controller
     }
     public function postAddQuestion(Request $request){
         $type = $request->type;
-        $question_exam = new QuestionExam;
         if($type == 2){
             $this->validate($request,
                 [
@@ -32,7 +34,8 @@ class QuestionExamController extends Controller
                     'question.max'=>'Tên tiêu đề phải có đọ dài từ 3 cho đến 100 hý tự',
                 ]
             );
-            if($request->typeof == 2 && isset($request->id_exam)){
+            if(isset($request->id_exam)){
+                $question_exam = new QuestionExam;
                 $question_exam->question = $request->question;
                 $question_exam->ans1 = $request->ans1;
                 $question_exam->ans2 = $request->ans2;
@@ -60,9 +63,10 @@ class QuestionExamController extends Controller
                 }
                 // Excel::import(new QuestionImport, $file);
                 $collections = (new QuestionImport)->toCollection($file);
-                if($request->typeof == 2 && $request->id_exam){
+                if($request->id_exam){
                     foreach($collections as $rows){
                         for($i = 1; $i < count($rows); $i++){
+                            $question_exam = new QuestionExam;
                             $question_exam->question = $rows[$i][0];
                             $question_exam->ans1 = $rows[$i][1];
                             $question_exam->ans2 = $rows[$i][2];

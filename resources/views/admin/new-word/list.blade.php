@@ -40,7 +40,7 @@
                     @foreach($newWord as $n)
                     <tr class="odd gradeX" align="center">
                         <td>{{ $n->id }}</td>
-                        <td>{{ $n->lesson }}</td>
+                        <td>{{ $n->lesson->title }}</td>
                         <td>{{ $n->name }}</td>
                         <td class="description">{{ $n->translate }}</td>
                         <td>{{ $n->spelling }}</td>
