@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\QuestionExam;
+use App\ScoreExam;
 use App\Exam;
 class ExamController extends Controller
 {
@@ -29,14 +32,14 @@ class ExamController extends Controller
         if($scoreExam){
             $scoreExam->score = $score;
             $scoreExam->save();
-            return redirect()->route('ket-qua-luyen-tap',['id_exam'=>$id_exam, 'score'=>$score]);
+            return redirect()->route('ket-qua-kiem-tra',['id_exam'=>$id_exam, 'score'=>$score]);
         } else {
             $scoreExam = new ScoreExam;
             $scoreExam->score = $score;
             $scoreExam->id_user = $user->id;
             $scoreExam->id_exam = $id_exam;
             $scoreExam->save();
-            return redirect()->route('ket-qua-luyen-tap',['id_exam'=>$id_exam, 'score'=>$score]);
+            return redirect()->route('ket-qua-kiem-tra',['id_exam'=>$id_exam, 'score'=>$score]);
         }
         
     }
