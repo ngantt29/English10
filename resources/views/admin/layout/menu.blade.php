@@ -17,6 +17,18 @@
                 <a href="admin/book/list"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
+                <a class style="cursor: pointer"><i class="fa fa-book fa-fw"></i> Banner<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level ">
+                    <li>
+                        <a href="admin/Banner/list">List Banner</a>
+                    </li>
+                    <li>
+                        <a href="admin/Banner/add">Add Banner</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
                 <a class style="cursor: pointer"><i class="fa fa-book fa-fw"></i> Unit<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level ">
                     <li>

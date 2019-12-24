@@ -31,7 +31,6 @@ class NewWordController extends Controller
                 ]
             );
         $type = $request->type;
-        $lesson = Lesson::select('id', 'title')->where("id",$request->id_lesson)->get();
         if($type == 2){
             $this->validate($request,
                 [
@@ -49,9 +48,8 @@ class NewWordController extends Controller
             $newWord->name = $request->name;
             $newWord->translate = $request->translate;
             $newWord->id_lesson = $request->id_lesson;
-            $newWord->lesson = $lesson[0]->title;
             $newWord->save();
-            return redirect('admin/NewWord/add')->with('Information','Thêm thành công');
+            return redirect('admin/NewWord/add')->with('Information','Success');
         } else if($type == 1){
             $extension = ['xls','xlsx','end'];
             if($request->hasFile('file')){
@@ -77,9 +75,8 @@ class NewWordController extends Controller
                         $newWord->translate = $rows[$i][1];
                         $newWord->spelling = $rows[$i][2];
                         $newWord->id_lesson = $request->id_lesson;
-                        $newWord->lesson = $lesson[0]->title;
                         $newWord->save();
-                        return redirect('admin/NewWord/add')->with('Information','Thêm thành công');
+                        return redirect('admin/NewWord/add')->with('Information','Success');
                     }
                 }
             }
@@ -110,9 +107,8 @@ class NewWordController extends Controller
         $newWord->translate = $request->translate;
         $newWord->spelling = $request->spelling;
         $newWord->id_lesson = $request->id_lesson;
-        $newWord->lesson = $lesson[0]->title;
         $newWord->save();
-        return redirect('admin/NewWord/edit/'.$id)->with('Information','Sửa thành công');
+        return redirect('admin/NewWord/edit/'.$id)->with('Information','Success');
 
         
 
@@ -122,7 +118,7 @@ class NewWordController extends Controller
         $newWord = NewWord::find($id);
         $newWord->delete();
 
-        return redirect('admin/NewWord/list') ->with('Information','Bạn đã xóa thành công');
+        return redirect('admin/NewWord/list') ->with('Information','Success');
 
     }
 }

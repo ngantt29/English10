@@ -10,6 +10,6 @@ class Unit extends Model
     protected $table = 'unit';
 
     public function lesson(){
-        return $this->hasMany('App\Lesson','id');
+        return $this->hasMany('App\Lesson','id_unit');
     }
 }

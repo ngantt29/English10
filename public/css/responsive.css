@@ -143,7 +143,13 @@
 
 
 @media only screen and (max-width: 780px) {
-
+    .basic_col2{
+        width: 100%;
+    }
+    .to_box_left_item_pt,.to_box_right_item_pt{
+        width: 100%;
+        margin-left: 0;
+    }
 }
 @media only screen and (max-width: 767px) {
     .nav-horizontal-content ul.nav-ul-lv-1{

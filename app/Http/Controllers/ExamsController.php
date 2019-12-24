@@ -8,7 +8,7 @@ class ExamsController extends Controller
 {
     //
     function getExams(){
-        $exam = Exam::all();
+        $exam = Exam::paginate(8);
     	return view('pages.exams',['exams'=>$exam]);
     }
 }

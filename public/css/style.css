@@ -870,3 +870,23 @@ img {
 .product-danhsach .taoodayne{
     display: block !important;
 }
+
+.score-table{
+    text-align: center;
+}
+
+.score-table table{
+    margin: 10px auto;
+    width: 100%;
+}
+
+.score-table tr,.score-table td,.score-table th{
+    border: 1px solid grey;
+    text-align: center !important;
+    padding: 10px !important;
+}
+
+.inline-block{
+    display: inline-block;
+    width: 100%;
+}

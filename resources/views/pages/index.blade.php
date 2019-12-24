@@ -2,11 +2,11 @@
 @section('content')
 <div class="container">
     <div>
-        <img src="{{ asset('images/banner2.png') }}" style="width: 100%;height: 200px;">
+        <img src="{{ asset("upload/images/".$banner[0]->avatar) }}" style="width: 100%;">
     </div>
     <div class="h-best-sale h-g">
         <div class="h-g-title">
-            <a href="{{ url('bai-giang') }}">
+            <a href="{{ url('tieng-anh-lop-10') }}">
                 Tiếng anh lớp 10 - sách mới
             </a>
         </div>
@@ -19,14 +19,14 @@
                             <a href="{{ url("tieng-anh-lop-10/$unit->id") }}">
                                 <img src="{{ asset('upload/images/'.$unit->avatar) }}" class="img-fluid">
                             </a>
-                            <div class="h-best-sale-insert-cart">
+                            {{-- <div class="h-best-sale-insert-cart">
                                 <div style="border-right: 1px solid #fff;">
                                     <a href="{{url("tieng-anh-lop-10/$unit->id")}}">Xem bài giảng</a>
                                 </div>
                                 <div>
                                     <a href="{{url("tieng-anh-lop-10/$unit->id")}}"><i class="far fa-heart"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="h-best-sale-product-content">
                             <div class="product-name">
@@ -52,14 +52,6 @@
                             <a href="{{ url("luyen-tap/$exer->id") }}">
                                 <img src="{{ asset("upload/images/$exer->avatar") }}" class="img-fluid">
                             </a>
-                            <div class="h-best-sale-insert-cart">
-                                <div style="border-right: 1px solid #fff;">
-                                    <a href="{{url("luyen-tap/$exer->id")}}">Xem bài giảng</a>
-                                </div>
-                                <div>
-                                    <a href=""><i class="far fa-heart"></i></a>
-                                </div>
-                            </div>
                         </div>
                         <div class="h-best-sale-product-content">
                             <div class="product-name">
@@ -85,14 +77,6 @@
                             <a href="{{ url("kiem-tra/$exam->id") }}">
                                 <img src="{{ asset("upload/images/$exam->avatar") }}" class="img-fluid">
                             </a>
-                            <div class="h-best-sale-insert-cart">
-                                <div style="border-right: 1px solid #fff;">
-                                    <a href="{{url("kiem-tra/$exam->id")}}">Xem bài giảng</a>
-                                </div>
-                                <div>
-                                    <a href=""><i class="far fa-heart"></i></a>
-                                </div>
-                            </div>
                         </div>
                         <div class="h-best-sale-product-content">
                             <div class="product-name">

@@ -13,16 +13,16 @@ class Exercise extends Model
     	return $this->belongsTo('App\Lesson','id_lesson','id');
     }
 
-    public function question(){
-        return $this->hasMany('App\Question','id');
+    public function questionExercise(){
+        return $this->hasMany('App\QuestionExercise','id_exercise');
     }
 
     public function scoreExercise(){
-        return $this->hasMany('App\ScoreExercise','id');
+        return $this->hasMany('App\ScoreExercise','id_exercise');
     }
 
     public function comment(){
-        return $this->hasMany('App\Comment','id');
+        return $this->hasMany('App\Comment','id_exercise');
     }
 
 }

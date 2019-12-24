@@ -20,14 +20,13 @@ class UnitController extends Controller
     public function postAddUnit(Request $request){
         $this->validate($request,
             [
-                'title'=>'required|min:3|max:100',
+                'title'=>'required|max:100',
                 'avatar'=>'required',
             ],
             [
-                'title.required'=>'bạn chưa nhập thể loại',
-                'title.min'=>'tên thể loại phải có đọ dài từ 3 cho đến 100 hý tự',
-                'title.max'=>'tên thể loại phải có đọ dài từ 3 cho đến 100 hý tự',
-                'avatar.required'=>'bạn chưa chọn ảnh đại diện cho unit'
+                'title.required'=>'Title is required',
+                'title.max'=>'Title max length is 100',
+                'avatar.required'=>'Avatar is required'
             ]
         );
         $unit = new Unit;
@@ -41,7 +40,6 @@ class UnitController extends Controller
                 # code...
                 if($key == 'end'){
                     return redirect('admin/Unit/add')->with('Warning','Just except .jpg, .png, .jpeg');
-                    
                 }
                 else if($duoi == $key){
                     break;
@@ -60,7 +58,7 @@ class UnitController extends Controller
             $unit->avatar = "";
         }   
         $unit->save();
-        return redirect('admin/Unit/add')->with('Information','Thêm thành công');
+        return redirect('admin/Unit/add')->with('Information','Success');
     }
     public function getEditUnit($id){
         $unit= Unit::find($id);
@@ -71,12 +69,11 @@ class UnitController extends Controller
         $unit=Unit::find($id);
         $this->validate($request,
             [
-                'title'=>'required|min:3|max:100',
+                'title'=>'required|max:100',
             ],
             [
-                'title.required'=>'bạn chưa nhập thể loại',
-                'title.min'=>'tên thể loại phải có độ dài từ 3 cho đến 100 hý tự',
-                'title.max'=>'tên thể loại phải có độ dài từ 3 cho đến 100 hý tự',
+                'title.required'=>'Title is required',
+                'title.max'=>'Title max length is 100',
             ]  
         );
         $unit->title = $request->title;
@@ -105,7 +102,7 @@ class UnitController extends Controller
             $unit->avatar = $name2;
         }
         $unit->save();
-        return redirect('admin/Unit/edit/'.$id)->with('Information','sửa thành công');
+        return redirect('admin/Unit/edit/'.$id)->with('Information','Success');
 
         
 
@@ -115,7 +112,7 @@ class UnitController extends Controller
         $unit = Unit::find($id);
         $unit->delete();
 
-        return redirect('admin/Unit/list') ->with('Information','bạn đã xóa thành công');
+        return redirect('admin/Unit/list') ->with('Information','Success');
 
     }
 }

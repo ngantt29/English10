@@ -21,7 +21,6 @@ class QuestionExamController extends Controller
     }
     public function postAddQuestion(Request $request){
         $type = $request->type;
-        $exam = Exam::select('id', 'title')->where("id",$request->id_exam)->first();
         $question_exam = new QuestionExam;
         if($type == 2){
             $this->validate($request,
@@ -41,9 +40,8 @@ class QuestionExamController extends Controller
                 $question_exam->ans4 = $request->ans4;
                 $question_exam->correctAnswer = $request->correctAnswer;
                 $question_exam->id_exam = $request->id_exam;
-                $question_exam->exam = $exam[0]->title;
                 $question_exam->save();
-                return redirect('admin/QuestionExam/add')->with('Information','Thêm thành công');
+                return redirect('admin/QuestionExam/add')->with('Information','Success');
             }
         } else if($type == 1){
             $extension = ['xls','xlsx','end'];
@@ -72,11 +70,10 @@ class QuestionExamController extends Controller
                             $question_exam->ans4 = $rows[$i][4];
                             $question_exam->correctAnswer = $rows[$i][5];
                             $question_exam->id_exam = $request->id_exam;
-                            $question_exam->exam = $exam->title;
                             $question_exam->save();
                         }
                     }
-                    return redirect('admin/QuestionExam/add')->with('Information','Thêm thành công');
+                    return redirect('admin/QuestionExam/add')->with('Information','Success');
                 }
             } else 
                 return redirect('admin/QuestionExam/add')->with('Warning','You must up your excel file in multi mode');
@@ -99,7 +96,6 @@ class QuestionExamController extends Controller
             ]  
         );
         $question=QuestionExam::find($id);
-        $exam = Exam::select('id', 'title')->where("id",$request->id_exam)->get();
         $question->question = $request->question;
         $question->ans1 = $request->ans1;
         $question->ans2 = $request->ans2;
@@ -107,19 +103,15 @@ class QuestionExamController extends Controller
         $question->ans4 = $request->ans4;
         $question->correctAnswer = $request->correctAnswer;
         $question->id_exam = $request->id_exam;
-        $question->exam = $exam[0]->title;
         $question->save();
-        return redirect('admin/QuestionExam/edit/'.$id)->with('Information','Sửa thành công');
-
-        
-
+        return redirect('admin/QuestionExam/edit/'.$id)->with('Information','Success');
     }    
     public function getDeleteQuestion($id)
     {
         $question = QuestionExam::find($id);
         $question->delete();
 
-        return redirect('admin/QuestionExam/list') ->with('Information','Bạn đã xóa thành công');
+        return redirect('admin/QuestionExam/list') ->with('Information','Success');
 
     }
 }

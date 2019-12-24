@@ -32,12 +32,10 @@ class LessonController extends Controller
                 'id_unit.required'=>'Bạn chưa chọn unit'
             ]
         );
-        $unit = Unit::select('id', 'title')->where("id", $request->id_unit)->get();
         $lesson = new Lesson;
         $lesson->title = $request->title;
         $lesson->desc = $request->desc;
         $lesson->id_unit = $request->id_unit;
-        $lesson->unit = $unit[0]->title;
         $extensionImg = ['jpg','png','jpeg','end'];
         if($request->hasFile('avatar')){
             $file = $request->file('avatar');
@@ -91,7 +89,7 @@ class LessonController extends Controller
             $lesson->avatar = "";
         }   
         $lesson->save();
-        return redirect('admin/Lesson/add')->with('Information','Thêm thành công');
+        return redirect('admin/Lesson/add')->with('Information','Success');
     }
     public function getEditLesson($id){
         $lesson= Lesson::find($id);
@@ -113,11 +111,9 @@ class LessonController extends Controller
             ]  
         );
         $lesson=Lesson::find($id);
-        $unit = Unit::select('id', 'title')->where("id", $request->id_unit)->get();
         $lesson->title = $request->title;
         $lesson->desc = $request->desc;
-        $lesson->id_unit = $request->id_unit;        
-        $lesson->unit = $unit[0]->title;
+        $lesson->id_unit = $request->id_unit;     
         $extension = ['jpg','png','jpeg','end'];
         if($rq->hasFile('avatar')){
             $file = $rq->file('avatar');
@@ -165,7 +161,7 @@ class LessonController extends Controller
             $lesson->video = $name2;
         }
         $lesson->save();
-        return redirect('admin/Lesson/edit/'.$id)->with('Information','Sửa thành công');
+        return redirect('admin/Lesson/edit/'.$id)->with('Information','Success');
 
         
 
@@ -175,7 +171,7 @@ class LessonController extends Controller
         $lesson = Lesson::find($id);
         $lesson->delete();
 
-        return redirect('admin/Lesson/list') ->with('Information','Bạn đã xóa thành công');
+        return redirect('admin/Lesson/list') ->with('Information','Success');
 
     }
 }

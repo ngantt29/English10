@@ -58,7 +58,7 @@ class ExamController extends Controller
             $exam->avatar = "";
         }   
         $exam->save();
-        return redirect('admin/Exam/add')->with('Information','Thêm thành công');
+        return redirect('admin/Exam/add')->with('Information','Success');
     }
     public function getEditExam($id){
         $exam= Exam::find($id);
@@ -106,7 +106,7 @@ class ExamController extends Controller
             $exam->avatar = "";
         }   
         $exam->save();
-        return redirect('admin/Exam/edit/'.$id)->with('Information','Sửa thành công');
+        return redirect('admin/Exam/edit/'.$id)->with('Information','Success');
 
         
 
@@ -116,7 +116,7 @@ class ExamController extends Controller
         $exam = Exam::find($id);
         $exam->delete();
 
-        return redirect('admin/Exam/list') ->with('Information','Bạn đã xóa thành công');
+        return redirect('admin/Exam/list') ->with('Information','Success');
 
     }
 }

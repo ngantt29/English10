@@ -24,16 +24,17 @@ class QuestionExerciseController extends Controller
     }
     public function postAddQuestion(Request $request){
         $type = $request->type;
-        $exercise = Exercise::select('id', 'title')->where("id",$request->id_exercise)->first();
         
         if($type == 2){
             $this->validate($request,
                 [
-                    'question'=>'required|min:3',
+                    'question'=>'required|max:100',
+                    'id_exercise'=>'required',
                 ],
                 [
-                    'question.required'=>'Bạn chưa nhập tiêu đề',
-                    'question.max'=>'Tên tiêu đề phải có đọ dài từ 3 cho đến 100 hý tự',
+                    'question.required'=>'Title is required',
+                    'question.max'=>'Title max length is 100',
+                    'id_exercise.required'=>'Exercise is required'
                 ]
             );
             if(isset($request->id_exercise)){
@@ -45,9 +46,8 @@ class QuestionExerciseController extends Controller
                 $question_exercise->ans4 = $request->ans4;
                 $question_exercise->correctAnswer = $request->correctAnswer;
                 $question_exercise->id_exercise = $request->id_exercise;
-                $question_exercise->exercise = $exercise[0]->title;
                 $question_exercise->save();
-                return redirect('admin/QuestionExercise/add')->with('Information','Thêm thành công');
+                return redirect('admin/QuestionExercise/add')->with('Information','Success');
             }
         } else if($type == 1){
             $extension = ['xls','xlsx','end'];
@@ -66,29 +66,26 @@ class QuestionExerciseController extends Controller
                 }
                 // Excel::import(new QuestionImport, $file);
                 $collections = (new QuestionImport)->toCollection($file);
-                if(isset($request->id_exercise)){
-                    foreach($collections as $rows){
-                        for($i = 1; $i < count($rows); $i++){
-                            $question_exercise = new QuestionExercise;
-                            $question_exercise->question = $rows[$i][0];
-                            $question_exercise->ans1 = $rows[$i][1];
-                            $question_exercise->ans2 = $rows[$i][2];
-                            $question_exercise->ans3 = $rows[$i][3];
-                            $question_exercise->ans4 = $rows[$i][4];
-                            $question_exercise->correctAnswer = $rows[$i][5];
-                            $question_exercise->id_exercise = $request->id_exercise;
-                            $question_exercise->exercise = $exercise->title;
-                            $question_exercise->save();
-                        }
+                foreach($collections as $rows){
+                    for($i = 1; $i < count($rows); $i++){
+                        $question_exercise = new QuestionExercise;
+                        $question_exercise->question = $rows[$i][0];
+                        $question_exercise->ans1 = $rows[$i][1];
+                        $question_exercise->ans2 = $rows[$i][2];
+                        $question_exercise->ans3 = $rows[$i][3];
+                        $question_exercise->ans4 = $rows[$i][4];
+                        $question_exercise->correctAnswer = $rows[$i][5];
+                        $question_exercise->id_exercise = $request->id_exercise;
+                        $question_exercise->save();
                     }
-                    return redirect('admin/QuestionExercise/add')->with('Information','Thêm thành công.');
                 }
+                return redirect('admin/QuestionExercise/add')->with('Information','Success.');
             } else 
                 return redirect('admin/QuestionExercise/add')->with('Warning','You must up your excel file in multi mode');
         }
     }
     public function getEditQuestion($id){
-        $question= QuestionExercise::find($id);
+        $question = QuestionExercise::find($id);
         $exercise = Exercise::all();
         return view('admin.question-exercise.edit',['question'=>$question, 'exercise'=>$exercise]);
     }
@@ -96,16 +93,16 @@ class QuestionExerciseController extends Controller
     public function postEditQuestion(Request $request, $id){
         $this->validate($request,
             [
-                'question'=>'required|min:3',
+                'question'=>'required|max:100',
+                'id_exercise'=>'required',
             ],
             [
-                'question.required'=>'Bạn chưa nhập tiêu đề',
-                'question.max'=>'Tên tiêu đề phải có đọ dài từ 3 cho đến 100 hý tự',
+                'question.required'=>'Title is required',
+                'question.max'=>'Title max length is 100',
+                'id_exercise.required'=>'Exercise is required'
             ]  
         );
         $question=QuestionExercise::find($id);
-        $exercise = Exercise::select('id', 'title')->where("id",$request->id_exercise)->get();
-        $exam = Exam::select('id', 'title')->where("id",$request->id_exam)->get();
         $question->question = $request->question;
         $question->ans1 = $request->ans1;
         $question->ans2 = $request->ans2;
@@ -113,9 +110,8 @@ class QuestionExerciseController extends Controller
         $question->ans4 = $request->ans4;
         $question->correctAnswer = $request->correctAnswer;
         $question->id_exercise = $request->id_exercise;
-        $question->exercise = $exercise[0]->title;
         $question->save();
-        return redirect('admin/QuestionExercise/edit/'.$id)->with('Information','Sửa thành công');
+        return redirect('admin/QuestionExercise/edit/'.$id)->with('Information','Success');
 
         
 
@@ -125,7 +121,7 @@ class QuestionExerciseController extends Controller
         $question = QuestionExercise::find($id);
         $question->delete();
 
-        return redirect('admin/QuestionExercise/list') ->with('Information','Bạn đã xóa thành công');
+        return redirect('admin/QuestionExercise/list') ->with('Information','Success');
 
     }
 }

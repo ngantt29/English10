@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExerciseTable extends Migration
+class CreateBanner extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateExerciseTable extends Migration
      */
     public function up()
     {
-        Schema::create('exercise', function (Blueprint $table) {
+        Schema::create('banner', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 255);
             $table->string('desc', 255)->nullable();
             $table->string('avatar', 255);
-            $table->unsignedBigInteger('id_lesson')->unique();
-            $table->foreign('id_lesson')->references('id')->on('lesson');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateExerciseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercise');
+        Schema::dropIfExists('banner');
     }
 }

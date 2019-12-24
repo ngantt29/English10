@@ -14,15 +14,15 @@ class Lesson extends Model
     }
 
     public function exercise(){
-        return $this->hasMany('App\Exercise','id');
+        return $this->hasMany('App\Exercise','id_lesson');
     }
 
     public function newWord(){
-        return $this->hasMany('App\NewWord','id');
+        return $this->hasMany('App\NewWord','id_lesson');
     }
 
     public function comment(){
-        return $this->hasMany('App\Comment','id');
+        return $this->hasMany('App\Comment','id_lesson');
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use App\Banner;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         //
         View::composer('*', function($view){
             $view->with('user_login', Auth::user());
+            $view->with('banner', Banner::all());
         });
         // if(Auth::check()){
         //     View::share('user_login', Auth::user());

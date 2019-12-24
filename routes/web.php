@@ -25,19 +25,34 @@ Route::group(['prefix' => ''], function(){
     Route::post('/dang-xuat','UserController@postLogout');
 });
 
-Route::group(['prefix' => 'kiem-tra/{id}', 'middlerware' => 'login'], function(){
+Route::group(['prefix' => 'binh-luan', 'middleware' => 'login'], function(){
+    Route::get('/{id_user}/{type}/{id_type}','CommentController@getComment')->name("binh-luan");
+    Route::post('/{id_user}/{type}/{id_type}','CommentController@postComment')->name("binh-luan");
+    Route::get('/{id_user}/{id}','CommentController@getDeleteComment')->name('xoa-binh-luan');
+});
+
+Route::group(['prefix' => 'kiem-tra/{id}', 'middleware' => 'login'], function(){
     // Route::get('','ExercisesController@getExercises');
     Route::get('','ExamController@getExam')->name("kiem-tra");
+    Route::post('cham-diem','ExamController@postExam')->name("cham-diem-kiem-tra");
+    Route::get('ket-qua/{score}','ExamController@getResult')->name("ket-qua-kiem-tra");
 });
 
-Route::group(['prefix' => 'tieng-anh-lop-10/{id_unit}/luyen-tap/{id}', 'middlerware' => 'login'], function(){
+Route::group(['prefix' => 'tieng-anh-lop-10/{id_unit}/luyen-tap/{id_exercise}', 'middleware' => 'login'], function(){
     Route::get('','ExerciseController@getExercise')->name("luyen-tap");
-    // Route::get('/{id}','ExerciseController@getExercise');
+    Route::post('cham-diem','ExerciseController@postExercise')->name("cham-diem-luyen-tap");
+    Route::get('ket-qua/{score}','ExerciseController@getResult')->name("ket-qua-luyen-tap");
 });
 
-Route::group(['prefix' => 'trang-ca-nhan', 'middlerware' => 'login'], function(){
-    Route::get('','ProfileController@getProfile');
-    Route::post('','ProfileController@postProfile');
+Route::group(['prefix' => 'trang-ca-nhan', 'middleware' => 'login'], function(){
+    Route::get('','ProfileController@getProfile')->name('trang-ca-nhan');
+    Route::post('','ProfileController@postProfile')->name('trang-ca-nhan');
+
+    Route::get('/thay-doi-thong-tin','ProfileController@getEditProfile')->name('thay-doi-thong-tin');
+    Route::post('/thay-doi-thong-tin','ProfileController@postEditProfile')->name('thay-doi-thong-tin');
+
+    // Route::get('/doi-mat-khau','UserController@getChangePassword')->name('doi-mat-khau');
+    // Route::post('/doi-mat-khau','UserController@postChangePassword')->name('doi-mat-khau');
 });
 
 Route::get('admin/login', 'UserController@getAdminLogin');
@@ -75,6 +90,22 @@ Route::group(['prefix' => 'admin','middleware' => 'adminLogin'], function() {
         Route::post('edit/{id}', 'Admin\UnitController@postEditUnit');
 
         Route::get('delete/{id}', 'Admin\UnitController@getDeleteUnit');
+
+    });
+
+    
+    Route::group(['prefix' => 'Banner'], function() {
+        //admin/Type/list
+        Route::get('list', 'Admin\BannerController@getListBanner');
+
+        Route::get('add', 'Admin\BannerController@getAddBanner');
+        Route::post('add', 'Admin\BannerController@postAddBanner');
+
+
+        Route::get('edit/{id}', 'Admin\BannerController@getEditBanner');
+        Route::post('edit/{id}', 'Admin\BannerController@postEditBanner');
+
+        Route::get('delete/{id}', 'Admin\BannerController@getDeleteBanner');
 
     });
 

@@ -4,7 +4,7 @@
 
     <!-- login -->
     <div>
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="margin: 0 auto;" role="document">
             <div class="modal-content">
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">
@@ -45,10 +45,10 @@
                             <input type="password" class="form-control" name="password"
                                 placeholder="Password" require>
                         </div>
-                        <div class="form-group form-check">
+                        {{-- <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">ghi nhớ mật khẩu</label>
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-primary" style="text-transform: uppercase;">đăng
                             nhập</button>
                         <a href="{{ url("dang-ky") }}">Đăng Ký</a>

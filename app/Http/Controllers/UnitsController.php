@@ -9,7 +9,7 @@ class UnitsController extends Controller
 {
     //
     function getUnits(){
-        $unit = Unit::all();
+        $unit = Unit::paginate(8);
     	return view('pages.units',['units'=>$unit]);
     }
 }

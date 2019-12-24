@@ -38,14 +38,14 @@ class User extends Authenticatable
     ];
     
     public function comment(){
-        return $this->hasMany('App\Comment','id');
+        return $this->hasMany('App\Comment','id_user');
     }
 
     public function scoreExam(){
-        return $this->hasMany('App\ScoreExam','id');
+        return $this->hasMany('App\ScoreExam','id_user');
     }
 
     public function scoreExercise(){
-        return $this->hasMany('App\ScoreExercise','id');
+        return $this->hasMany('App\ScoreExercise','id_user');
     }
 }

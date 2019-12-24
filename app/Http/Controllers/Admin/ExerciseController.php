@@ -23,7 +23,7 @@ class ExerciseController extends Controller
         $this->validate($request,
             [
                 'title'=>'required|min:3|max:100',
-                'id_lesson'=>'required',
+                'id_lesson'=>'required|unique:exercise,id_lesson',
             ],
             [
                 'title.required'=>'Bạn chưa nhập tiêu đề',
@@ -32,12 +32,10 @@ class ExerciseController extends Controller
                 'id_lesson.required'=>'Bạn chưa chọn lesson'
             ]
         );
-        $lesson = Lesson::select('id', 'title')->where("id",$request->id_lesson)->get();
         $exercise = new Exercise;
         $exercise->title = $request->title;
         $exercise->desc = $request->desc;
         $exercise->id_lesson = $request->id_lesson;
-        $exercise->lesson = $lesson[0]->title;
         $extension = ['jpg','png','jpeg','end'];
         if($request->hasFile('avatar')){
             $file = $request->file('avatar');
@@ -65,7 +63,7 @@ class ExerciseController extends Controller
             $exercise->avatar = "";
         }   
         $exercise->save();
-        return redirect('admin/Exercise/add')->with('Information','Thêm thành công');
+        return redirect('admin/Exercise/add')->with('Information','Success');
     }
     public function getEditExercise($id){
         $exercise= Exercise::find($id);
@@ -87,10 +85,8 @@ class ExerciseController extends Controller
             ]  
         );
         $exercise=Exercise::find($id);
-        $lesson = Lesson::select('id', 'title')->where("id",$request->id_lesson)->get();
         $exercise->desc = $request->desc;
         $exercise->id_lesson = $request->id_lesson;
-        $exercise->lesson = $lesson[0]->title;
         $extension = ['jpg','png','jpeg','end'];
         if($request->hasFile('avatar')){
             $file = $request->file('avatar');
@@ -119,14 +115,14 @@ class ExerciseController extends Controller
             $exercise->avatar = "";
         }   
         $exercise->save();
-        return redirect('admin/Exercise/edit/'.$id)->with('Information','Sửa thành công');
+        return redirect('admin/Exercise/edit/'.$id)->with('Information','Success');
     }    
     public function getDeleteExercise($id)
     {
         $exercise = Exercise::find($id);
         $exercise->delete();
 
-        return redirect('admin/Exercise/list') ->with('Information','Bạn đã xóa thành công');
+        return redirect('admin/Exercise/list') ->with('Information','Success');
 
     }
 }

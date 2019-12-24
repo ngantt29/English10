@@ -18,8 +18,10 @@ class CreateScoreExamTable extends Migration
             $table->integer('score');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
+            $table->string('user', 255);
             $table->unsignedBigInteger('id_exam');
             $table->foreign('id_exam')->references('id')->on('exam');
+            $table->string('exam', 255);
             $table->timestamps();
         });
     }

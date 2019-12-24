@@ -10,10 +10,10 @@ class Exam extends Model
     protected $table = 'exam';
     
     public function scoreExam(){
-        return $this->hasMany('App\ScoreExam','id');
+        return $this->hasMany('App\ScoreExam','id_exam');
     }
 
-    public function question(){
-        return $this->hasMany('App\Question','id');
+    public function questionExam(){
+        return $this->hasMany('App\QuestionExam','id_exam');
     }
 }

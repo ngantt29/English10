@@ -18,8 +18,10 @@ class CreateScoreExerciseTable extends Migration
             $table->integer('score');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
+            $table->string('user', 255);
             $table->unsignedBigInteger('id_exercise');
             $table->foreign('id_exercise')->references('id')->on('exercise');
+            $table->string('exercise', 255);
             $table->timestamps();
         });
     }

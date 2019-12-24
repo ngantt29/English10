@@ -51,7 +51,7 @@ class QuestionController extends Controller
                 $question_exercise->id_exercise = $request->id_exercise;
                 $question_exercise->exercise = $exercise[0]->title;
                 $question_exercise->save();
-                return redirect('admin/Question/add')->with('Information','Thêm thành công');
+                return redirect('admin/Question/add')->with('Information','Success');
             } else if($request->typeof == 2 && isset($request->id_exam)){
                 $question_exam->question = $request->question;
                 $question_exam->ans1 = $request->ans1;
@@ -62,7 +62,7 @@ class QuestionController extends Controller
                 $question_exam->id_exam = $request->id_exam;
                 $question_exam->exam = $exam[0]->title;
                 $question_exam->save();
-                return redirect('admin/Question/add')->with('Information','Thêm thành công');
+                return redirect('admin/Question/add')->with('Information','Success');
             }
         } else if($type == 1){
             $extension = ['xls','xlsx','end'];
@@ -96,7 +96,7 @@ class QuestionController extends Controller
                             $question_exercise->save();
                         }
                     }
-                    return redirect('admin/Question/add')->with('Information','Thêm thành công.');
+                    return redirect('admin/Question/add')->with('Information','Success.');
                 } else if($request->typeof == 2 && $request->id_exam){
                     foreach($collections as $rows){
                         for($i = 1; $i < count($rows); $i++){
@@ -111,7 +111,7 @@ class QuestionController extends Controller
                             $question_exam->save();
                         }
                     }
-                    return redirect('admin/Question/add')->with('Information','Thêm thành công');
+                    return redirect('admin/Question/add')->with('Information','Success');
                 }
             } else 
                 return redirect('admin/Question/add')->with('Warning','You must up your excel file in multi mode');
@@ -148,7 +148,7 @@ class QuestionController extends Controller
         $question->id_exam = $request->id_exam;
         $question->exam = $exam[0]->title;
         $question->save();
-        return redirect('admin/Question/edit/'.$id)->with('Information','Sửa thành công');
+        return redirect('admin/Question/edit/'.$id)->with('Information','Success');
 
         
 
@@ -158,7 +158,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $question->delete();
 
-        return redirect('admin/Question/list') ->with('Information','Bạn đã xóa thành công');
+        return redirect('admin/Question/list') ->with('Information','Success');
 
     }
 }

@@ -44,12 +44,14 @@ class UserController extends Controller
         $this->validate($request,[
             'email'=>'required|unique:users,email',
             'password'=>'required|min:8|max:32',
+            'rePassword'=>'required',
         ],[
             'email.required'=>"Bạn chưa nhập email",
             'email.unique'=>"Email đã tồn tại",
-            'password.required'=>"Bạn chủa nhập mật khẩu",
-            'password.min'=>"Mật khẩu quá ngắn, ít nhất",
-            'password.max'=>"Mật khẩu quá dài"
+            'password.required'=>"Bạn chưa nhập mật khẩu",
+            'password.min'=>"Mật khẩu quá ngắn, ít nhất 8 ký tự",
+            'password.max'=>"Mật khẩu quá dài, nhiều nhất 32 ký tự",
+            'rePassword.required'=>"Bạn chưa nhập lại mật khẩu",
         ]);
         if($request->password == $request->re_password){
             return redirect("dang-ky")->with('Warning', "Nhập lại mật khẩu không chính xác");
@@ -61,6 +63,62 @@ class UserController extends Controller
         $user->save();
         return redirect("dang-nhap")->with('Information', "Đăng ký thành công! Hãy đăng nhập");
     }
+
+    function getChangePassword(){
+        return view('auth.repassword');
+    }
+
+    function postChangePassword(Request $request){
+        $this->validate($request,[
+            'email'=>'required',
+            'password'=>'required|min:8|max:32',
+            'repassword'=>'required',
+            'oldpassword'=>'required',
+        ],[
+            'email.required'=>"Bạn chưa nhập email",
+            'oldpassword.required'=>"Bạn chưa nhập mật khẩu cũ",
+            'password.required'=>"Bạn chưa nhập mật khẩu",
+            'password.min'=>"Mật khẩu quá ngắn, ít nhất 8 ký tự",
+            'password.max'=>"Mật khẩu quá dài, nhiều nhất 32 ký tự",
+            'repassword.required'=>"Bạn chưa nhập lại mật khẩu",
+        ]);
+        if($request->password == $request->re_password){
+            return back()->with('Warning', "Nhập lại mật khẩu không chính xác");
+        }
+        $user = Auth::user();
+        echo bcrypt($request->oldpassword)."<br>".$user->password;
+        // if($user && $user->email == $request->email){
+        //     if(bcrypt($request->oldpassword) == $user->password){
+        //         if($request->password == $request->repassword){
+        //             $user->password = bcrypt($request->password);
+        //             $user->save();
+        //             return redirect("dang-nhap")->with('Information', "Đổi mật khẩu thành công");
+        //         } else{
+        //             return back()->with('Warning', "Mật khẩu nhập lại không chính xác");    
+        //         }
+        //     } else{
+        //         return back()->with('Warning', "Mật khẩu không chính xác");    
+        //     }
+        // } else 
+        //     return back()->with('Warning', "Email không chính xác");
+    }
+
+    
+    // $user = User::where('email', $request->email)->first();
+    // if($user){
+    //     if(bcrypt($request->oldpassword) == $user->password){
+    //         if($request->password == $request->repassword){
+    //             $user->password = bcrypt($request->password);
+    //             $user->save();
+    //             return redirect("dang-nhap")->with('Information', "Đổi mật khẩu thành công");
+    //         } else{
+    //             return back()->with('Warning', "Mật khẩu nhập lại không chính xác");    
+    //         }
+    //     } else{
+    //         return back()->with('Warning', "Mật khẩu không chính xác");    
+    //     }
+    // } else 
+    //     return back()->with('Warning', "Email chưa được đăng ký");
 
     function getLogout(){
         Auth::logout();

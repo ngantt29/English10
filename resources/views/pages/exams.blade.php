@@ -6,7 +6,7 @@
             Kiểm tra năng lực học sinh
         </div>
         <div class="h-best-sale-content">
-            <div class="row">
+            <div class="inline-block">
                 @foreach ($exams as $exam)
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 unit">
                     <div class="unit-sub">
@@ -32,6 +32,7 @@
                 </div>
                 @endforeach
             </div>
+            {{ $exams->links() }}
         </div>
     </div>
 </div>
