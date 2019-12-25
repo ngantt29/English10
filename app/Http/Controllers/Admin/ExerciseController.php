@@ -11,7 +11,7 @@ class ExerciseController extends Controller
 {
     //
     public function getListExercise(){
-        $exercise= Exercise::all();
+        $exercise= Exercise::paginate(10);
         return view('admin.Exercise.list',['exercise'=>$exercise]);
     }
 

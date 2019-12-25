@@ -158,18 +158,6 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li> --}}
-            <li>
-                <a class style="cursor: pointer"><i class="fa fa-comments fa-fw"></i> Comment<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level ">
-                    <li>
-                        <a href="admin/Question/list">List Comment</a>
-                    </li>
-                    <li>
-                        <a href="admin/Question/list">Add Comment</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

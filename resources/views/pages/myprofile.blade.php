@@ -146,14 +146,14 @@
 									</table>
 								</div>
 								<div  class="score-table col-md-6">
-									<h3>Điểm bài bài kiểm tra</h3>
+									<h3>Điểm bài kiểm tra</h3>
 									<table class="score-table">
 										<tr>
 											<th>
 												Thứ tự
 											</th>
 											<th>
-												Luyện tập
+												Bài kiểm tra
 											</th>
 											<th>
 												Điểm

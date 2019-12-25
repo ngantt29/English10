@@ -1,10 +1,10 @@
 @extends('admin.layout.index')
 @section('content')
-<div id="page-wrapper" style="display: inline-block;">
+<div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"> Unit
+                <h1 class="page-header"> Question Exercise
                     <small>List</small>
                 </h1>
             </div>
@@ -27,6 +27,7 @@
                 <thead>
                     <tr align="center">
                         <th>ID</th>
+                        <th>Exercise</th>
                         <th>Question</th>
                         <th>Answer 1</th>
                         <th>Answer 2</th>
@@ -41,6 +42,7 @@
                     @foreach($question as $q)
                     <tr class="odd gradeX" align="center">
                         <td>{{ $q->id }}</td>
+                        <td>{{ $q->exercise->title }}</td>
                         <td>{{ $q->question }}</td>
                         <td>{{ $q->ans1 }}</td>
                         <td>{{ $q->ans2 }}</td>
@@ -55,6 +57,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $question->links() }}
         </div>
         <!-- /.row -->
     </div>

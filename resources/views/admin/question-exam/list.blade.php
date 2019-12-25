@@ -1,10 +1,10 @@
 @extends('admin.layout.index')
 @section('content')
-<div id="page-wrapper" style="display: inline-block;">
+<div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"> Unit
+                <h1 class="page-header"> Question Exam
                     <small>List</small>
                 </h1>
             </div>
@@ -54,6 +54,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $question->links() }}
         </div>
         <!-- /.row -->
     </div>

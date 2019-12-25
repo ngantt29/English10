@@ -11,7 +11,7 @@ class LessonController extends Controller
 {
     //
     public function getListLesson(){
-        $lesson= Lesson::all();
+        $lesson= Lesson::paginate(10);
         return view('admin.lesson.list',['lesson'=>$lesson]);
     }
 

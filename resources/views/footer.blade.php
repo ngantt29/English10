@@ -29,22 +29,6 @@
 					Xuân Thủy, Cầu Giấy, Hà Nội</a>
 
 			</div>
-			<div class="col-md-3 bottom">
-				<span>Đăng ký để nhận tin</span>
-				<a href="">nhận tất cả thông báo của Sự Kiện,Khuyến Mãi và các ưu đãi khác.Đăng ký ngay hôm nay.</a>
-				<div class="input-bot d-flex">
-					<input type="email" placeholder="Điền địa chỉ email của bạn tại đây">
-					<button class="ml-1" style="padding: 5px;">CONFIRM</button>
-				</div>
-				<div class="lienket d-flex">
-					<a href=""><i class="fab fa-facebook-f"></i></a>
-					<a href=""><i class="fab fa-twitter"></i></a>
-					<a href=""><i class="fab fa-google-plus-g"></i></a>
-					<a href=""><i class="fab fa-instagram"></i></a>
-				</div>
-
-
-			</div>
 		</div>
 
 	</div>

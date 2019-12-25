@@ -23,7 +23,7 @@ class UserController extends Controller
             'password'=>'required|min:8|max:32',
         ],[
             'email.required'=>"Bạn chưa nhập email",
-            'password.required'=>"Bạn chủa nhập mật khẩu",
+            'password.required'=>"Bạn chưa nhập mật khẩu",
             'password.min'=>"Mật khẩu quá ngắn, ít nhất 8 ký tự",
             'password.max'=>"Mật khẩu quá dài"
         ]);

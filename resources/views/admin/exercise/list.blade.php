@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('content')
-<div id="page-wrapper" style="display: inline-block;">
+<div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -28,9 +28,10 @@
                 <thead>
                     <tr align="center">
                         <th>ID</th>
-                        <th>title</th>
-                        <th>desc</th>
-                        <th>avatar</th>
+                        <th>Lesson</th>
+                        <th>Title</th>
+                        <th>Desc</th>
+                        <th>Avatar</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
@@ -39,6 +40,7 @@
                     @foreach($exercise as $e)
                     <tr class="odd gradeX" align="center">
                         <td>{{ $e->id }}</td>
+                        <td>{{ $e->lesson->title }}</td>
                         <td>{{ $e->title }}</td>
                         <td class="description">{{ $e->desc }}</td>
                         <td><img width="100px" src="upload/images/{{ $e->avatar }}"></td>
@@ -48,6 +50,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $exercise->links() }}
         </div>
         <!-- /.row -->
     </div>

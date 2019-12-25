@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('content')
-<div id="page-wrapper" style="display: inline-block;">
+<div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -28,9 +28,9 @@
                 <thead>
                     <tr align="center">
                         <th>ID</th>
-                        <th>title</th>
-                        <th>desc</th>
-                        <th>avatar</th>
+                        <th>Title</th>
+                        <th>Desc</th>
+                        <th>Avatar</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
@@ -48,6 +48,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $exam->links() }}
         </div>
         <!-- /.row -->
     </div>

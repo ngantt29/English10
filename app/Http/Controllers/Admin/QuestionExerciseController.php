@@ -14,7 +14,7 @@ class QuestionExerciseController extends Controller
 {
     //
     public function getListQuestion(){
-        $question = QuestionExercise::all();
+        $question = QuestionExercise::paginate(10);
         return view('admin.question-exercise.list',['question'=>$question]);
     }
 

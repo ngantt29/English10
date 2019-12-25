@@ -13,7 +13,7 @@ class NewWordController extends Controller
 {
     //
     public function getListNewWord(){
-        $newWord = NewWord::all();
+        $newWord = NewWord::paginate(10);
         return view('admin.new-word.list',['newWord'=>$newWord]);
     }
 

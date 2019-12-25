@@ -10,7 +10,7 @@ class UnitController extends Controller
 {
     //    
     public function getListUnit(){
-        $unit= Unit::all();
+        $unit= Unit::paginate(10);
         return view('admin.unit.list',['unit'=>$unit]);
     }
 

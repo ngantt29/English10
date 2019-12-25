@@ -16,7 +16,7 @@ class QuestionController extends Controller
 {
     //
     public function getListQuestion(){
-        $question = Question::all();
+        $question = Question::paginate(10);
         return view('admin.question.list',['question'=>$question]);
     }
 

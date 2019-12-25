@@ -10,7 +10,7 @@ class ExamController extends Controller
 {
     //
     public function getListExam(){
-        $exam= Exam::all();
+        $exam= Exam::paginate(10);
         return view('admin.Exam.list',['exam'=>$exam]);
     }
 

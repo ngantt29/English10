@@ -23,7 +23,8 @@
     <link rel="stylesheet" type="text/css" href="{{  asset('css/outside.css') }}">
     <link rel="stylesheet" type="text/css" href="{{  asset('css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{  asset('css/home-responsive.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{  asset('admin_assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{  asset('admin_assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
@@ -39,19 +40,21 @@
 <body>
 
     @include('header')
-    
-<section class="home-wrap">
-    @yield('content')
-</section>
+
+    <section class="home-wrap">
+        @yield('content')
+    </section>
     @include('footer')
 
 
 
 
 
-	<!-- custom js -->
-	<script>
-	$(document).ready(function () {
+    <!-- custom js -->
+
+    @yield('script')
+    <script>
+        $(document).ready(function () {
 		$(".content-box").slideUp();
         var down = false;
 		$(".box-1-title").click(function(){
@@ -76,9 +79,9 @@
             $(".product-list").hide();
         })
     });
+    
 
-
-	</script>
+    </script>
 
 </body>
 
